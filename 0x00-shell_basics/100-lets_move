@@ -1,3 +1,2 @@
 #!/bin/bash
-export LC_ALL=C
-mv [A-Z]* /tmp/u
+mv [[A-Z]*] /tmp/u
