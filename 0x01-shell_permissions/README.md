@@ -1,0 +1,1 @@
+su betty switches directory to betty
