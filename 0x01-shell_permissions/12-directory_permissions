@@ -1,2 +1,2 @@
 #!/bin/bash
-mkdir my_dir --context=751
+mkdir --context=751 my_dir
