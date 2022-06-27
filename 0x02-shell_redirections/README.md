@@ -2,3 +2,4 @@
 1-confused-smiley: Prints a confused smiley. 😕
 2-hellofile: Display the content of etc/passwrd
 3-twofiles: Display the contents of two files
+4-lastlines: Display the last 10 lines of  /etc/passwrd
