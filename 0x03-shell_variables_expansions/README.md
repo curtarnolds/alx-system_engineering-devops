@@ -8,5 +8,7 @@
 7-create_globla_variable creates a new global variable with name 'BEST'
 8-true_knowledge prints the result of the addition of 128 with the value stored in the environment variable TRUEKNOWLEDGE, followed by a new line.
 9-divide_and_rule prints the result of POWER divided by DIVIDE, followed by a new line.
+10-love_exponent_breath displays the result of BREATH to the power LOVE
+
 
 
