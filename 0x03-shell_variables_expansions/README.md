@@ -4,3 +4,4 @@
 3-paths creates ascript that counts the number of directories in the PATH
 4-global_variables lists environment variables
 5-local_variables lists local variables and  functions
+6-create_local_variable creates a local  variable with name 
