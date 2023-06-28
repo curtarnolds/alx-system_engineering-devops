@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 # Displays Best Schoo 10 times
-i=1
+i=0
 until [ $i -eq 10 ]
 do
 	echo "Best School"
