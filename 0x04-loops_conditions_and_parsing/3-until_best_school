@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# Use an Until loop
+# Displays Best Schoo 10 times
 i=1
 until [ $i -eq 10 ]
 do
