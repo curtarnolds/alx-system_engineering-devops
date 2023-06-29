@@ -1,3 +1,6 @@
 #!/usr/bin/env bash
 # Display a part of name of files in current directory
-ls | cut -d "-" -f 2
+list=$(ls)
+for file in $list; do
+	echo "$file" | cut -d "-" -f 2
+done
