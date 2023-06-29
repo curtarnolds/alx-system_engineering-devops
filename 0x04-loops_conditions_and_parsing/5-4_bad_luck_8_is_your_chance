@@ -15,4 +15,5 @@ while [ $i -le 10 ]
 	else
 		echo "Best School"
 	fi
+	((i++))
 done
