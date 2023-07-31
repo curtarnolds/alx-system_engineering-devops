@@ -1,5 +1,6 @@
 # 2. Secured and monitored web infrastructure
 
+* Link (<https://imgur.com/a/7ynqDJ1>)
 * For every additional element, why you are adding it:
   * Firewalls filter traffic to and from a device
   * Monitoring checks for anormalies. Could be hardware or software
