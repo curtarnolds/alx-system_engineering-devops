@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+# Install and configure Nginx on a server
+
+# Install nginx
+sudo apt-get -y update
+sudo apt-get -y install nginx
+sudo ufw allow 'Nginx HTTP'
+
+# Set up default page
+sudo chown "$USER":"$USER" /var/www/html
+echo 'Hello World!' > /var/www/html/index.html
+sudo service nginx restart
