@@ -1,0 +1,30 @@
+#!/usr/bin/env bash
+# Redirect root domain to /redirect_me with `301 Moved Permanently` HTTP response code
+# Install nginx
+sudo apt-get -y update
+sudo apt-get -y install nginx
+sudo ufw allow 'Nginx HTTP'
+
+# Set up default page
+sudo chown "$USER":"$USER" /var/www/html
+echo 'Hello World!' > /var/www/html/index.html
+
+# Set up redirect
+SERVER_CONFIG=\
+"server {
+	listen 80 default_server;
+	listen [::]:80 default_server;
+	root /var/www/html;
+	index index.html index.htm index.nginx-debian.html;
+	server_name _;
+	location / {
+		try_files \$uri \$uri/ =404;
+	}
+	if (\$request_filename ~ redirect_me){
+		rewrite ^ https://youtube.com permanent;
+	}
+}"
+
+bash -c "echo -e '$SERVER_CONFIG' > /etc/nginx/sites-enabled/default"
+
+sudo service nginx restart
