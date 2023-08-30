@@ -25,6 +25,7 @@ SERVER_CONFIG=\
 	}
 }"
 
-bash -c "echo -e '$SERVER_CONFIG' > /etc/nginx/sites-available/default"
+echo -e "$SERVER_CONFIG" > /etc/nginx/sites-available/default
+
 
 sudo service nginx restart
