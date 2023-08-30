@@ -24,7 +24,7 @@ SERVER_CONFIG=\
 	location /404.html {
 		internal;
 	}
-	
+
 	if (\$request_filename ~ redirect_me){
 		rewrite ^ https://youtube.com permanent;
 	}
@@ -32,6 +32,6 @@ SERVER_CONFIG=\
 
 sudo chown "$USER":"$USER" /etc/nginx/sites-available/default
 echo "$SERVER_CONFIG" > /etc/nginx/sites-available/default
-echo "Ceci n'est pas une page" > /var/www/html/404.html
+echo -e "Ceci n'est pas une page\n" > /var/www/html/404.html
 
 sudo service nginx restart
