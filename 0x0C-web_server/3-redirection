@@ -28,4 +28,9 @@ SERVER_CONFIG=\
 echo -e "$SERVER_CONFIG" > /etc/nginx/sites-available/default
 
 
-sudo service nginx restart
+if [ "$(pgrep nginx)" -le 0 ];
+then
+    sudo service nginx start
+else
+    sudo service nginx restart
+fi;
