@@ -24,6 +24,7 @@ SERVER_CONFIG=\
 	location /404.html {
 		internal;
 	}
+	
 	if (\$request_filename ~ redirect_me){
 		rewrite ^ https://youtube.com permanent;
 	}
