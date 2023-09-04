@@ -19,7 +19,7 @@ SERVER_CONFIG=\
 	server_name _;
 	location / {
 		try_files \$uri \$uri/ =404;
-		add_header X-Served-By $hostname;
+		add_header X-Served-By $(hostname);
 	}
 	error_page 404 /404.html;
 	location /404.html {
@@ -35,7 +35,7 @@ sudo chown "$USER":"$USER" /etc/nginx/sites-available/default
 echo "$SERVER_CONFIG" > /etc/nginx/sites-available/default
 echo -e "Ceci n'est pas une page\n" > /var/www/html/404.html
 
-if [ $(pgrep -c nginx) -eq 0 ]
+if [ "$(sudo pgrep -c nginx)" -eq 0 ]
 	then
 		sudo service nginx start
 	else
