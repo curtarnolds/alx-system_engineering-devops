@@ -1,13 +1,13 @@
 #!/usr/bin/env bash
 # Redirect root domain to /redirect_me with `301 Moved Permanently` HTTP response code
 # Install nginx
-#sudo apt-get -y update
-#sudo apt-get -y install nginx
-#sudo ufw allow 'Nginx HTTP'
+sudo apt-get -y update
+sudo apt-get -y install nginx
+sudo ufw allow 'Nginx HTTP'
 
 # Set up default page
-#sudo chown -R "$USER":"$USER" /var/www/html
-#echo 'Hello World!' > /var/www/html/index.html
+sudo chown -R "$USER":"$USER" /var/www/html
+echo 'Hello World!' > /var/www/html/index.html
 
 # Set up redirect
 SERVER_CONFIG=\
