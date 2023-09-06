@@ -11,7 +11,7 @@ sudo apt-get -y install haproxy=2.0.\*
 DOMAIN_NAME='curtarnolds.tech'
 INIT_FILE='/etc/default/haproxy'
 CONFIG_FILE='/etc/haproxy/haproxy.cfg'
-sudo chown "$USER":"$USER" "$INIT_FILE" "$CONFIG_FILE"
+sudo chown "$USER":"$USER" "/etc/default/" "/etc/haproxy/"
 
 HAPROXY_LB_CONFIG=\
 "
