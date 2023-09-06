@@ -17,6 +17,7 @@ sudo chown -R "$USER":"$USER" "/etc/haproxy/"
 HAPROXY_LB_CONFIG=\
 "
 #--$DOMAIN_NAME-params-begin--
+	no option http-use-htx
 backend $DOMAIN_NAME-backend
 	balance roundrobin
 	server web-01 54.87.209.173:80 check
