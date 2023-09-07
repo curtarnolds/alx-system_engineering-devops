@@ -2,6 +2,5 @@
 # Rewrite server blocks
 sudo sed -ie 's/8080/80/' /etc/nginx/sites-available/default
 sudo sed -ie 's/server_name localhost/server_name _/' /etc/nginx/sites-available/default
-sudo service nginx stop
+sudo service nginx restart
 sudo sed -ie 's/ENABLED=1//' /etc/default/nginx
-sudo /etc/init.d/nginx start
