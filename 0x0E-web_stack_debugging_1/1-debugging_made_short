@@ -1,6 +1,5 @@
 #!/usr/bin/env bash
 # Rewrite server blocks
 sudo sed -i 's/8080/80/g' /etc/nginx/sites-enabled/default
-sudo sed -i 's/server_name localhost/server_name _/' /etc/nginx/sites-enabled/default
 sudo service nginx restart
 echo "" > /run/nginx.pid
