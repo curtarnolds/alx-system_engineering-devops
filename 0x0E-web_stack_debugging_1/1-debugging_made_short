@@ -3,4 +3,4 @@
 sudo sed -i 's/8080/80/g' /etc/nginx/sites-enabled/default
 sudo sed -i 's/server_name localhost/server_name _/' /etc/nginx/sites-enabled/default
 sudo service nginx restart
-sudo sed -i 's/ENABLED=1//' /etc/default/nginx
+echo "" > /run/nginx.pid
