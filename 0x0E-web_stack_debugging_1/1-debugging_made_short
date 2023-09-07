@@ -4,3 +4,4 @@ sudo sed -i 's/8080/80/' /etc/nginx/sites-available/default
 sudo sed -i 's/server_name localhost/server_name _/' /etc/nginx/sites-available/default
 sudo service nginx restart
 sudo sed -i 's/ENABLED=1//' /etc/default/nginx
+sudo /etc/init.d/nginx start
