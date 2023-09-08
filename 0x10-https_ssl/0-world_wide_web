@@ -7,8 +7,8 @@ list=("www" "lb-01" "web-01" "web-02")
 if [ $# -eq 1 ]; then
 	for i in "${list[@]}"; do
 		subdomain=$i
-		dig "$subdomain.$domain" | grep 'ANSWER SECTION:' --no-group-separator -A1 | grep -v 'ANSWER SECTION:' | awk -v subdomain_="$subdomain"  '{ print "the subdomain " subdomain_ " is a " $4 " record and points to " $5 }'
+		dig "$subdomain.$domain" | grep 'ANSWER SECTION:' --no-group-separator -A1 | grep -v 'ANSWER SECTION:' | awk -v subdomain_="$subdomain"  '{ print "The subdomain " subdomain_ " is a " $4 " record and points to " $5 }'
 	done
 	else
-		dig "$subdomain.$domain" | grep 'ANSWER SECTION:' --no-group-separator -A1 | grep -v 'ANSWER SECTION:' | awk -v subdomain_="$subdomain" '{ print "the subdomain " subdomain_ " is a " $4 " record and points to " $5 }'
+		dig "$subdomain.$domain" | grep 'ANSWER SECTION:' --no-group-separator -A1 | grep -v 'ANSWER SECTION:' | awk -v subdomain_="$subdomain" '{ print "The subdomain " subdomain_ " is a " $4 " record and points to " $5 }'
 fi
