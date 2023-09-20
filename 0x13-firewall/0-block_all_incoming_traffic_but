@@ -1,0 +1,22 @@
+#!/bin/bash
+# First disable the service
+sudo ufw disable
+
+# Reset firewall to default
+sudo ufw reset
+
+# Stop ufw service
+sudo service ufw stop
+
+# Set default rules to deny all incoming and allow all outgoing
+sudo ufw default deny incoming
+sudo ufw default allow outgoing
+
+# Add specific rules
+sudo ufw allow ssh
+sudo ufw allow http
+sudo ufw allow https
+
+# Reenable ufw
+sudo service ufw stop
+sudo ufw enable
