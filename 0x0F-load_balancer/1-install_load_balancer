@@ -11,8 +11,6 @@ sudo apt-get -y install haproxy=2.0.\*
 DOMAIN_NAME='curtarnolds.tech'
 INIT_FILE='/etc/default/haproxy'
 CONFIG_FILE='/etc/haproxy/haproxy.cfg'
-sudo chown -R "$USER":"$USER" "/etc/default/"
-sudo chown -R "$USER":"$USER" "/etc/haproxy/"
 
 HAPROXY_LB_CONFIG=\
 "
@@ -24,7 +22,7 @@ backend $DOMAIN_NAME-backend
 	server web-02 54.144.148.21:80 check
 frontend $DOMAIN_NAME-frontend
 	bind *:80
-	mode http
+	option http-server-close
 	default_backend $DOMAIN_NAME-backend
 #--$DOMAIN_NAME-params-end--
 "
@@ -37,11 +35,11 @@ CONFIG_WORDS=$(grep -Eco "$DOMAIN_NAME-backend" < $CONFIG_FILE)
 if [ "$(grep -Eco '^ENABLED=[01]$' < $INIT_FILE)" -gt 0 ]; then
 	sudo sed -i 's/^ENABLED=0$/ENABLED=1/' "$INIT_FILE"
 else
-	echo 'ENABLED=1' >> $INIT_FILE
+	echo 'ENABLED=1' | sudo tee -a "$INIT_FILE"
 fi
 
 if [ "$CONFIG_WORDS" -eq 0 ]; then
-	echo -e "$HAPROXY_LB_CONFIG" >> $CONFIG_FILE
+	echo -e "$HAPROXY_LB_CONFIG" | sudo tee -a "$CONFIG_FILE"
 else
 	start_tkn="#--$DOMAIN_NAME-params-begin--"
 	end_tkn="#--$DOMAIN_NAME-params-end--"
@@ -50,12 +48,7 @@ else
 	a=$((a - 1))
 	b=$((b + 1))
 	sudo sed -i "$a,$b"d "$CONFIG_FILE"
-	echo -en "$HAPROXY_LB_CONFIG" >> $CONFIG_FILE
+	echo -en "$HAPROXY_LB_CONFIG" | sudo tee -a  "$CONFIG_FILE"
 fi
 
 sudo service haproxy restart
-# if ! pgrep haproxy > /dev/null; then
-# 	sudo service haproxy start
-# else
-# 	sudo service haproxy restart
-# fi
