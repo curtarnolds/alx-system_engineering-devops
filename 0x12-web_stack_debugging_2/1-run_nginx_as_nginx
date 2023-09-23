@@ -2,4 +2,4 @@
 # Run nginx as nginx user
 sudo usermod -aG root nginx
 sudo chmod 644 /etc/nginx/nginx.conf
-sudo -u nginx nginx
+sudo -u nginx service nginx restart
