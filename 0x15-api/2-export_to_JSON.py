@@ -20,7 +20,7 @@ if __name__ == '__main__':
             _dict[f'{UserId}'].append(
                 {
                     'task': f"{res.get('title').lower()}",
-                    'completed': f"{res.get('completed').lower()}",
+                    'completed': f"{str(res.get('completed')).lower()}",
                     'username': f'{username}'
                 }
             )
