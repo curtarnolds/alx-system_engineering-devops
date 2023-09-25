@@ -19,8 +19,8 @@ if __name__ == '__main__':
         for res in response:
             _dict[f'{UserId}'].append(
                 {
-                    'task': f"{res.get('title')}",
-                    'completed': f"{res.get('completed')}",
+                    'task': f"{res.get('title').lower()}",
+                    'completed': f"{res.get('completed').lower()}",
                     'username': f'{username}'
                 }
             )
