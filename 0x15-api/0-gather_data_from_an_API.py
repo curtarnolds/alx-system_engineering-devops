@@ -21,4 +21,5 @@ print(
     f"Employee {emp_name} is done with tasks({done_tasks}/{total_tasks}):"
 )
 for res in response:
-    print('\t', res.get('title'))
+    if res.get('completed') is True:
+        print('\t', res.get('title'))
