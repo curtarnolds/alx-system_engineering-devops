@@ -35,6 +35,7 @@ def count_words(subreddit,  word_list=[], after=None, _dict={}):
             count_words(subreddit, word_list=word_list,
                         after=after, _dict=_dict)
         else:
+            _dict = dict(sorted(_dict))
             sorted_dict = dict(
                 sorted(_dict.items(), key=lambda key: key[1], reverse=True))
             for k, v in sorted_dict.items():
