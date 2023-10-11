@@ -23,7 +23,6 @@ def recurse(subreddit, hotlist=[], after=None):
                         headers=headers, params=payload,
                         allow_redirects=False)
     if resp.status_code in [302, 404]:
-        print(resp.status_code)
         return
 
     try:
@@ -31,7 +30,6 @@ def recurse(subreddit, hotlist=[], after=None):
         after = resp_json.get('data').get('after')
         for post in resp_json.get('data').get('children'):
             hotlist.append(post.get('data').get('title'))
-
         if after:
             recurse(subreddit=subreddit, hotlist=hotlist, after=after)
     except requests.JSONDecodeError:
