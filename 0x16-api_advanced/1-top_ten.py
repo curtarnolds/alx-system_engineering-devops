@@ -11,6 +11,7 @@ def top_ten(subreddit):
     """Print the titles of the first 10 hot posts listed"""
     if type(subreddit) != str:
         print('None')
+        return
 
     headers = {'User-Agent': 'MyApi/0.0.1'}
     payload = {'limit': 10}
@@ -19,6 +20,7 @@ def top_ten(subreddit):
                         allow_redirects=False)
     if resp.status_code in [302, 404]:
         print('None')
+        return
     try:
         resp_json = resp.json()
         for post in resp_json.get('data').get('children'):
