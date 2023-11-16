@@ -5,6 +5,6 @@ server {
         location /airbnb-onepage/ {
                 include proxy_params;
                 proxy_pass http://localhost:5000;
-                proxy_set_header X-Served-By $host;
+                add_header X-Served-By Curt;
          }
 }
