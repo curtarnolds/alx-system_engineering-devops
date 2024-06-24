@@ -10,8 +10,8 @@ def number_of_subscribers(subreddit):
     """
     if type(subreddit) != str:
         return 0
-    headers = {
-        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) Chrome/46.0.2490.80'}
+    headers = {'User-Agent':
+               'Mozilla/5.0 (Windows NT 10.0; Win64; x64) Chrome/46.0.2490.80'}
     resp = requests.get('https://www.reddit.com/r/{}/about.json'
                         .format(subreddit),
                         headers=headers, allow_redirects=False)
