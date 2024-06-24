@@ -1,0 +1,148 @@
+{
+	"title": "ALX Webstack Monitoring",
+	"description": "[[suggested_dashboards]]",
+	"widgets": [
+		{
+			"id": 6033391150552190,
+			"definition": {
+				"title": "",
+				"title_size": "16",
+				"title_align": "left",
+				"time": {},
+				"requests": [
+					{
+						"response_format": "scalar",
+						"formulas": [{ "formula": "query1", "limit": { "order": "desc" } }],
+						"queries": [
+							{
+								"query": "sum:system.mem.used{*} by {service}",
+								"data_source": "metrics",
+								"name": "query1",
+								"aggregator": "sum"
+							}
+						],
+						"style": { "palette": "datadog16" }
+					}
+				],
+				"type": "sunburst",
+				"legend": { "type": "automatic" }
+			},
+			"layout": { "x": 0, "y": 0, "width": 4, "height": 4 }
+		},
+		{
+			"id": 3937590823651156,
+			"definition": {
+				"title": "",
+				"title_size": "16",
+				"title_align": "left",
+				"time": {},
+				"type": "distribution",
+				"xaxis": {
+					"min": "auto",
+					"max": "auto",
+					"include_zero": true,
+					"scale": "linear"
+				},
+				"yaxis": {
+					"min": "auto",
+					"max": "auto",
+					"include_zero": true,
+					"scale": "linear"
+				},
+				"requests": [
+					{
+						"formulas": [{ "formula": "query1 + query2" }],
+						"queries": [
+							{
+								"data_source": "metrics",
+								"name": "query1",
+								"query": "avg:system.io.r_s{*} by {service}",
+								"aggregator": "avg"
+							},
+							{
+								"data_source": "metrics",
+								"name": "query2",
+								"query": "avg:system.io.r_s{*} by {service}",
+								"aggregator": "avg"
+							}
+						],
+						"response_format": "scalar"
+					}
+				]
+			},
+			"layout": { "x": 4, "y": 0, "width": 4, "height": 2 }
+		},
+		{
+			"id": 7060140294895600,
+			"definition": {
+				"title": "",
+				"title_size": "16",
+				"title_align": "left",
+				"time": {},
+				"type": "query_table",
+				"requests": [
+					{
+						"queries": [
+							{
+								"data_source": "metrics",
+								"name": "query1",
+								"query": "avg:system.cpu.user{*} by {service}",
+								"aggregator": "avg"
+							},
+							{
+								"data_source": "metrics",
+								"name": "query2",
+								"query": "avg:system.cpu.interrupt{*} by {service}",
+								"aggregator": "avg"
+							},
+							{
+								"data_source": "metrics",
+								"name": "query3",
+								"query": "avg:system.cpu.system{*} by {service}",
+								"aggregator": "avg"
+							},
+							{
+								"data_source": "metrics",
+								"name": "query4",
+								"query": "avg:system.mem.cached{*} by {service}",
+								"aggregator": "avg"
+							}
+						],
+						"response_format": "scalar",
+						"formulas": [
+							{
+								"cell_display_mode": "bar",
+								"formula": "query1",
+								"limit": { "count": 500, "order": "desc" }
+							},
+							{ "cell_display_mode": "bar", "formula": "query2" },
+							{ "cell_display_mode": "bar", "formula": "query3" },
+							{ "cell_display_mode": "bar", "formula": "query4" }
+						]
+					}
+				],
+				"has_search_bar": "auto"
+			},
+			"layout": { "x": 8, "y": 0, "width": 4, "height": 4 }
+		},
+		{
+			"id": 5410772500768084,
+			"definition": {
+				"title": "",
+				"title_size": "16",
+				"title_align": "left",
+				"type": "hostmap",
+				"requests": { "fill": { "q": "avg:system.cpu.user{*} by {host}" } },
+				"node_type": "host",
+				"no_metric_hosts": true,
+				"no_group_hosts": true,
+				"style": { "palette": "green_to_orange", "palette_flip": false }
+			},
+			"layout": { "x": 0, "y": 4, "width": 4, "height": 2 }
+		}
+	],
+	"template_variables": [],
+	"layout_type": "ordered",
+	"notify_list": [],
+	"reflow_type": "fixed"
+}
